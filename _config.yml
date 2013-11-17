@@ -5,16 +5,18 @@ permalink: /:categories/:year/:month/:day/:title
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 pygments: true
 
+safe: true
+
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Jekyll Bootstrap
-tagline: Site Tagline
+title : imunew's tech blog
+tagline: 
 author :
   name : Name Lastname
   email : blah@email.test
-  github : username
-  twitter : username
+  github : imunew
+  twitter : imunew
   feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
@@ -25,7 +27,7 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://username.github.io
+production_url : http://imunew.github.io
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
@@ -80,7 +82,7 @@ JB :
   # Set 'provider' to false to turn commenting off globally.
   #
   comments :
-    provider : disqus
+    provider : false
     disqus :
       short_name : jekyllbootstrap
     livefyre :
