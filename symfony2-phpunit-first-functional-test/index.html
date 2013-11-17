@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Symfony2 + PHPUnitではじめてのテスト（機能テスト編）</title>
+    
+    <meta name="author" content="Name Lastname">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/blog/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/blog/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+
+    <!-- atom & rss feed -->
+    <link href="/blog/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/blog/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/blog">imunew's tech blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/blog/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/blog/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/blog/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/blog/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Symfony2 + PHPUnitではじめてのテスト（機能テスト編） <small></small></h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>17 November 2013</span>
+    </div>
+    <div class="content">
+      <h2 id='id1'>さっそくやってみよう</h2>
+<p>導入方法および単体テストについては、下記を参照ください。</p>
+<p><a href='/test/2013/11/11/symfony2-phpunit-first-unit-test/'>Symfony2 + PHPUnitではじめてのテスト（単体テスト編）</a></p>
+
+<h3 id='controller'>機能テスト（Controller編）</h3>
+
+<h4 id='id2'>テストケースの作成</h4>
+
+<p>コントローラーをconsoleから作成すると、テストケースももれなく作成されます。</p>
+
+<p><a href='http://symfony.com/doc/current/bundles/SensioGeneratorBundle/commands/generate_controller.html'>Generating a New Controller - Symfony(current)</a></p>
+
+<blockquote>
+<p>The generate:controller command generates a new Controller including actions, <strong>tests</strong>, templates and routing.</p>
+</blockquote>
+
+<p><a href='https://github.com/sensiolabs/SensioGeneratorBundle/blob/master/Generator/ControllerGenerator.php'>ControllerGenerator.php - Github</a></p>
+<div class='highlight'><pre><code class='php'><span class='x'>$this-&gt;renderFile(&#39;controller/ControllerTest.php.twig&#39;, $dir.&#39;/Tests/Controller/&#39;.$controller.&#39;ControllerTest.php&#39;, $parameters);</span>
+</code></pre></div>
+<p>自動生成されたテストケースは下記のようなイメージ</p>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+<span class='k'>namespace</span> <span class='nx'>Sopra\WebBundle\Tests\Controller</span><span class='p'>;</span>
+<span class='k'>use</span> <span class='nx'>Symfony\Bundle\FrameworkBundle\Test\WebTestCase</span><span class='p'>;</span>
+
+<span class='k'>class</span> <span class='nc'>MypageControllerTest</span> <span class='k'>extends</span> <span class='nx'>WebTestCase</span>
+<span class='p'>{</span>
+<span class='p'>}</span>
+</code></pre></div>
+<h4 id='id3'>環境変数を設定</h4>
+
+<p>必要に応じて、phpunit.xmlに変数設定を追加します。</p>
+<div class='highlight'><pre><code class='xml'><span class='nt'>&lt;phpunit&gt;</span>
+    <span class='c'>&lt;!-- ... --&gt;</span>
+    <span class='nt'>&lt;php&gt;</span>
+        <span class='nt'>&lt;server</span> <span class='na'>name=</span><span class='s'>&quot;KERNEL_DIR&quot;</span> <span class='na'>value=</span><span class='s'>&quot;../app/&quot;</span> <span class='nt'>/&gt;</span>
+        <span class='nt'>&lt;server</span> <span class='na'>name=</span><span class='s'>&quot;SERVER_NAME&quot;</span> <span class='na'>value=</span><span class='s'>&quot;local.sopra.jp&quot;</span> <span class='nt'>/&gt;</span>
+        <span class='nt'>&lt;server</span> <span class='na'>name=</span><span class='s'>&quot;SERVER_PORT&quot;</span> <span class='na'>value=</span><span class='s'>&quot;80&quot;</span> <span class='nt'>/&gt;</span>
+        <span class='nt'>&lt;server</span> <span class='na'>name=</span><span class='s'>&quot;SCRIPT_NAME&quot;</span> <span class='na'>value=</span><span class='s'>&quot;&quot;</span> <span class='nt'>/&gt;</span>
+        <span class='nt'>&lt;server</span> <span class='na'>name=</span><span class='s'>&quot;REQUEST_URI&quot;</span> <span class='na'>value=</span><span class='s'>&quot;&quot;</span> <span class='nt'>/&gt;</span>
+    <span class='nt'>&lt;/php&gt;</span>
+    <span class='c'>&lt;!-- ... --&gt;</span>
+<span class='nt'>&lt;/phpunit&gt;</span>
+</code></pre></div>
+<h4 id='id4'>テストメソッドの実装</h4>
+<p>大まかにいうとテストメソッドの処理フローは以下のようになります。</p><div class='highlight'><pre><code class='php'><span class='x'>// &#39;test&#39;で始まるpublic関数を定義</span>
+<span class='x'>public function testExecuteSuccess() {</span>
+<span class='x'>        </span>
+<span class='x'>    // 必要に応じて環境変数を設定</span>
+<span class='x'>        </span>
+<span class='x'>    // 準備（データの初期化など）</span>
+<span class='x'>        </span>
+<span class='x'>    // ページにアクセス</span>
+<span class='x'>        </span>
+<span class='x'>    // テストしたい処理を実行（送信ボタンをクリックなど）</span>
+<span class='x'>    </span>
+<span class='x'>    // 結果を検証</span>
+<span class='x'>}</span>
+</code></pre></div>
+<h2 id='sopra'>実践してみよう（sopraの場合）</h2>
+
+<p>sopraで実際に実装したときに、つまづいた点などを中心にポイントを解説していきます。</p>
+
+<h3 id='id5'>ログイン</h3>
+<p>ログインが必要なページをテストする場合は、ログイン状態をシミュレートしなければいけません。<br />
+symfony.comに説明があるので、ほぼそのとおり実装しました。<br />
+</p>
+<p><a href='http://symfony.com/doc/current/cookbook/testing/simulating_authentication.html'>How to simulate Authentication with a Token in a Functional Test (current) - Symfony</a></p>
+<div class='highlight'><pre><code class='php'><span class='x'>private function logIn()</span>
+<span class='x'>{</span>
+<span class='x'>    $session = $this-&gt;client-&gt;getContainer()-&gt;get(&#39;session&#39;);</span>
+
+<span class='x'>    $firewall = &#39;secured_area&#39;;</span>
+<span class='x'>    $token = new UsernamePasswordToken(&#39;admin&#39;, null, $firewall, array(&#39;ROLE_ADMIN&#39;));</span>
+<span class='x'>    $session-&gt;set(&#39;_security_&#39;.$firewall, serialize($token));</span>
+<span class='x'>    $session-&gt;save();</span>
+
+<span class='x'>    $cookie = new Cookie($session-&gt;getName(), $session-&gt;getId());</span>
+<span class='x'>    $this-&gt;client-&gt;getCookieJar()-&gt;set($cookie);</span>
+<span class='x'>}</span>
+</code></pre></div>
+<h3 id='doctrin_fixtures_bundle'>テスト用データの投入（Doctrin Fixtures Bundleの導入）</h3>
+
+<p>テストを実行するたびにデータを手動で投入していたのでは、意味が無いので、Doctrin Fixtures Bundleを導入することにしました。</p>
+
+<p><a href='http://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html'>DoctrineFixturesBundle - Symfony</a></p>
+<div class='highlight'><pre><code class='json'><span class='p'>{</span>
+    <span class='nt'>&quot;require&quot;</span><span class='p'>:</span> <span class='p'>{</span>
+        <span class='nt'>&quot;doctrine/doctrine-fixtures-bundle&quot;</span><span class='p'>:</span> <span class='s2'>&quot;dev-master&quot;</span>
+    <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div><p>sopraでは、いったんテーブルをtruncateしてからデータを投入するようにしています。</p><div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+
+<span class='k'>namespace</span> <span class='nx'>Sopra\CoreBundle\DataFixtures\Helper</span><span class='p'>;</span>
+
+<span class='k'>use</span> <span class='nx'>Doctrine\ORM\EntityManager</span><span class='p'>;</span>
+
+<span class='k'>class</span> <span class='nc'>EntityHelper</span> <span class='p'>{</span>
+    
+    <span class='k'>private</span> <span class='nv'>$entityManager</span><span class='p'>;</span>
+    
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>__construct</span><span class='p'>(</span><span class='nx'>EntityManager</span> <span class='nv'>$entityManager</span><span class='p'>)</span> <span class='p'>{</span>
+        
+        <span class='nv'>$this</span><span class='o'>-&gt;</span><span class='na'>entityManager</span> <span class='o'>=</span> <span class='nv'>$entityManager</span><span class='p'>;</span>
+    <span class='p'>}</span>
+    
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>truncateTables</span><span class='p'>(</span><span class='nv'>$tables</span><span class='p'>)</span> <span class='p'>{</span>
+        
+        <span class='nv'>$connection</span> <span class='o'>=</span> <span class='nv'>$this</span><span class='o'>-&gt;</span><span class='na'>entityManager</span><span class='o'>-&gt;</span><span class='na'>getConnection</span><span class='p'>();</span>
+        <span class='nv'>$platform</span> <span class='o'>=</span> <span class='nv'>$connection</span><span class='o'>-&gt;</span><span class='na'>getDatabasePlatform</span><span class='p'>();</span>
+        
+        <span class='nv'>$connection</span><span class='o'>-&gt;</span><span class='na'>exec</span><span class='p'>(</span><span class='s1'>&#39;SET FOREIGN_KEY_CHECKS = 0&#39;</span><span class='p'>);</span>
+
+        <span class='k'>foreach</span> <span class='p'>(</span><span class='nv'>$tables</span> <span class='k'>as</span> <span class='nv'>$table</span><span class='p'>)</span> <span class='p'>{</span>
+            <span class='nv'>$connection</span><span class='o'>-&gt;</span><span class='na'>exec</span><span class='p'>(</span><span class='nv'>$platform</span><span class='o'>-&gt;</span><span class='na'>getTruncateTableSQL</span><span class='p'>(</span><span class='nv'>$table</span><span class='p'>));</span>
+        <span class='p'>}</span>
+        
+        <span class='nv'>$connection</span><span class='o'>-&gt;</span><span class='na'>exec</span><span class='p'>(</span><span class='s1'>&#39;SET FOREIGN_KEY_CHECKS = 1&#39;</span><span class='p'>);</span>
+    <span class='p'>}</span>
+    
+<span class='p'>}</span>
+</code></pre></div>
+<p>&#8216;SET FOREIGN_KEY_CHECKS = 0&#8217;は外部キーを無視するために実行していますが、mysql固有の関数なので修正必要ですね。</p>
+
+<p><a href='http://dev.mysql.com/doc/refman/5.1/ja/innodb-foreign-key-constraints.html'>MySQL 5.1 リファレンスマニュアル :: 13.5.6.4 FOREIGN KEY 制約</a></p>
+
+<p>さらに、テストケースからFixtureをloadするために、別のHelperクラスを実装しています。</p>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+
+<span class='k'>namespace</span> <span class='nx'>Sopra\CoreBundle\DataFixtures\Helper</span><span class='p'>;</span>
+
+<span class='k'>use</span> <span class='nx'>Doctrine\Common\DataFixtures\Executor\ORMExecutor</span><span class='p'>;</span>
+<span class='k'>use</span> <span class='nx'>Doctrine\Common\DataFixtures\FixtureInterface</span><span class='p'>;</span>
+<span class='k'>use</span> <span class='nx'>Doctrine\Common\DataFixtures\Loader</span><span class='p'>;</span>
+<span class='k'>use</span> <span class='nx'>Doctrine\ORM\EntityManager</span><span class='p'>;</span>
+<span class='k'>use</span> <span class='nx'>Symfony\Component\DependencyInjection\ContainerAwareInterface</span><span class='p'>;</span>
+<span class='k'>use</span> <span class='nx'>Symfony\Component\DependencyInjection\ContainerInterface</span><span class='p'>;</span>
+
+<span class='k'>class</span> <span class='nc'>FixturesHelper</span> <span class='p'>{</span>
+    
+    <span class='k'>private</span> <span class='nv'>$container</span><span class='p'>;</span>
+    <span class='k'>private</span> <span class='nv'>$entityManager</span><span class='p'>;</span>
+    
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>__construct</span><span class='p'>(</span><span class='nx'>ContainerInterface</span> <span class='nv'>$container</span><span class='p'>,</span> <span class='nx'>EntityManager</span> <span class='nv'>$entityManager</span><span class='p'>)</span> <span class='p'>{</span>
+        
+        <span class='nv'>$this</span><span class='o'>-&gt;</span><span class='na'>container</span> <span class='o'>=</span> <span class='nv'>$container</span><span class='p'>;</span>
+        <span class='nv'>$this</span><span class='o'>-&gt;</span><span class='na'>entityManager</span> <span class='o'>=</span> <span class='nv'>$entityManager</span><span class='p'>;</span>
+    <span class='p'>}</span>
+    
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>loadFixtures</span><span class='p'>(</span><span class='nv'>$fixtures</span><span class='p'>)</span> <span class='p'>{</span>
+        
+        <span class='nv'>$loader</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nx'>Loader</span><span class='p'>();</span>
+        <span class='k'>foreach</span> <span class='p'>(</span><span class='nv'>$fixtures</span> <span class='k'>as</span> <span class='nv'>$fixture</span><span class='p'>)</span> <span class='p'>{</span>
+            <span class='k'>if</span> <span class='p'>(</span><span class='nv'>$fixture</span> <span class='nx'>instanceof</span> <span class='nx'>ContainerAwareInterface</span><span class='p'>)</span> <span class='p'>{</span>
+                <span class='nv'>$fixture</span><span class='o'>-&gt;</span><span class='na'>setContainer</span><span class='p'>(</span><span class='nv'>$this</span><span class='o'>-&gt;</span><span class='na'>container</span><span class='p'>);</span>
+            <span class='p'>}</span>
+            <span class='k'>if</span> <span class='p'>(</span><span class='nv'>$fixture</span> <span class='nx'>instanceof</span> <span class='nx'>FixtureInterface</span><span class='p'>)</span> <span class='p'>{</span>
+                <span class='nv'>$loader</span><span class='o'>-&gt;</span><span class='na'>addFixture</span><span class='p'>(</span><span class='nv'>$fixture</span><span class='p'>);</span>
+            <span class='p'>}</span>
+        <span class='p'>}</span>
+        <span class='nv'>$executor</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nx'>ORMExecutor</span><span class='p'>(</span><span class='nv'>$this</span><span class='o'>-&gt;</span><span class='na'>entityManager</span><span class='p'>);</span>
+        <span class='nv'>$executor</span><span class='o'>-&gt;</span><span class='na'>execute</span><span class='p'>(</span><span class='nv'>$loader</span><span class='o'>-&gt;</span><span class='na'>getFixtures</span><span class='p'>(),</span> <span class='k'>true</span><span class='p'>);</span>
+    <span class='p'>}</span>
+    
+<span class='p'>}</span>
+</code></pre></div>
+<p>各Fixtureからサービスコンテナにアクセスするために、ContainerAwareInterfaceを実装します。 sopraでは、EntityHelperに渡すEntityManagerを取得するために、setContainerしています。</p>
+
+<p><a href='http://symfony.com/doc/current/bundles/DoctrineFixturesBundle/#using-the-container-in-the-fixtures'>Using the Container in the Fixtures - Symfony</a></p>
+
+<p>各クラス、インターフェイスの関係をクラス図にまとめると下記のようになります。</p>
+<a href='/images/data_fixtures.png'>
+<img src='/images/data_fixtures.png' />
+</a>
+<h3 id='id6'>ページにアクセス</h3>
+
+<p>ページへのアクセスはSymfony\Bundle\FrameworkBundle\Clientオブジェクトを通じて行いますので、setupメソッドにて生成し、メンバ変数にセットしておきます。</p>
+<div class='highlight'><pre><code class='php'><span class='x'>namespace Sopra\WebBundle\Tests\TestCase;</span>
+
+<span class='x'>use Symfony\Bundle\FrameworkBundle\Client;</span>
+<span class='x'>use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;</span>
+
+<span class='x'>abstract class BaseWebTestCase extends WebTestCase {</span>
+
+<span class='x'>    /** @var Client */</span>
+<span class='x'>    private $client;</span>
+
+<span class='x'>    protected function setUp() {</span>
+<span class='x'>        </span>
+<span class='x'>        parent::setUp();</span>
+<span class='x'>        </span>
+<span class='x'>        $this-&gt;client = static::createClient();</span>
+</code></pre></div>
+<p>Client::requestメソッドにてページにアクセスします。 リダイレクトされる場合はfollowRedirectし、戻り値のcrawlerオブジェクトを取得します。</p>
+<div class='highlight'><pre><code class='php'><span class='x'>$this-&gt;getClient()-&gt;request(&#39;GET&#39;, &#39;/path/to/page&#39;);</span>
+<span class='x'>$crawler = $this-&gt;getClient()-&gt;followRedirect();</span>
+<span class='x'>/* @var $crawler Symfony\Component\DomCrawler\Crawler */</span>
+</code></pre></div>
+<h3 id='id7'>テストしたい処理を実行</h3>
+
+<p>&#8216;Submit&#8217;ボタンをクリックして、レスポンスを取得する場合は、下記のような実装になります。</p>
+<div class='highlight'><pre><code class='php'><span class='x'>$form = $crawler-&gt;selectButton(&#39;Submit&#39;)-&gt;form();</span>
+<span class='x'>        </span>
+<span class='x'>$this-&gt;getClient()-&gt;submit($form);</span>
+<span class='x'>$crawler = $this-&gt;getClient()-&gt;followRedirect();</span>
+</code></pre></div>
+<h3 id='id8'>結果を検証</h3>
+
+<p>結果ページに&#8217;Success&#8217;という文字列が含まれているかどうかを確認するには、下記のような実装になります。</p>
+<div class='highlight'><pre><code class='php'><span class='x'>$this-&gt;assertTrue($crawler-&gt;filter(&#39;html:contains(&quot;Success&quot;)&#39;)-&gt;count() &gt; 0);</span>
+</code></pre></div><p>
+'Success'と言う文字列が一つも含まれない場合は、その時点でテスト失敗となります。
+上記のassertTrue意外にも、PHPUnitにはあらかじめ様々なアサーションメソッドが用意されています。
+</p>
+<p><a href='http://phpunit.de/manual/3.7/ja/writing-tests-for-phpunit.html#writing-tests-for-phpunit.assertions'>アサーション - phpunit</a></p>
+
+<h3 id='id9'>実装サンプル</h3>
+
+<p><a href='https://gitlab.hitomedia.jp/sopra/tree/master/src/Sopra/WebBundle/Tests/Controller/WalletControllerTest.php'>実装サンプル - gitlab.hitomedia.jp</a></p>
+
+<h2 id='id10'>テスト実行</h2>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span><span class='nb'>cd </span>bin
+<span class='nv'>$ </span>./phpunit -c ../app/ ../src/Sopra/WebBundle/Tests/Controller/WalletControllerTest.php
+PHPUnit 3.7.27 by Sebastian Bergmann.
+
+Configuration <span class='nb'>read </span>from /Users/imura/workspace/sopra/app/phpunit.xml
+
+.....
+
+Time: 7.95 seconds, Memory: 51.50Mb
+
+OK <span class='o'>(</span>5 tests, 33 assertions<span class='o'>)</span>
+</code></pre></div>
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/blog/categories.html#test-ref">
+    		test <span>3</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/blog/tags.html#Symfony2-ref">Symfony2 <span>3</span></a></li>
+     
+    	<li><a href="/blog/tags.html#PHPUnit-ref">PHPUnit <span>3</span></a></li>
+     
+    	<li><a href="/blog/tags.html#Doctrine-ref">Doctrine <span>1</span></a></li>
+     
+    	<li><a href="/blog/tags.html#test-ref">test <span>3</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev disabled"><a>&larr; Previous</a></li>
+      
+        <li><a href="/blog/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/blog/symfony2-phpunit-first-mocking" title="Symfony2 + PHPUnitではじめてのテスト（モック編）">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+  </div>
+</div>
+
+
+      </div>
+      <hr>
+      <footer>
+      <!--
+        <p>&copy; 2013 Name Lastname
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      -->
+        <br>
+      </footer>
+    </div>
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-123-12']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

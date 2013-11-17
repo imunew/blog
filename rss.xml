@@ -5,8 +5,8 @@
         <description>imunew's tech blog - Name Lastname</description>
         <link>http://imunew.github.io</link>
         <link>http://imunew.github.io</link>
-        <lastBuildDate>2013-11-17T17:39:51+09:00</lastBuildDate>
-        <pubDate>2013-11-17T17:39:51+09:00</pubDate>
+        <lastBuildDate>2013-11-17T17:44:22+09:00</lastBuildDate>
+        <pubDate>2013-11-17T17:44:22+09:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -106,8 +106,8 @@ Time: 353 ms, Memory: 16.25Mb
 
 OK &lt;span class=&#39;o&#39;&gt;(&lt;/span&gt;2 tests, 6 assertions&lt;span class=&#39;o&#39;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-                <link>http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-unit-test</link>
-                <guid>http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-unit-test</guid>
+                <link>http://imunew.github.io/symfony2-phpunit-first-unit-test</link>
+                <guid>http://imunew.github.io/symfony2-phpunit-first-unit-test</guid>
                 <pubDate>2013-11-17T00:00:00+09:00</pubDate>
         </item>
 
@@ -144,8 +144,8 @@ OK &lt;span class=&#39;o&#39;&gt;(&lt;/span&gt;2 tests, 6 assertions&lt;span cla
 &lt;p&gt;
 これを機に社内にテストコードを書くエンジニアが増えてきたら、カバレッジ分析、自動テストなどに取り組んでいきたいと思います。
 &lt;/p&gt;</description>
-                <link>http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-mocking</link>
-                <guid>http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-mocking</guid>
+                <link>http://imunew.github.io/symfony2-phpunit-first-mocking</link>
+                <guid>http://imunew.github.io/symfony2-phpunit-first-mocking</guid>
                 <pubDate>2013-11-17T00:00:00+09:00</pubDate>
         </item>
 
@@ -383,8 +383,8 @@ Time: 7.95 seconds, Memory: 51.50Mb
 
 OK &lt;span class=&#39;o&#39;&gt;(&lt;/span&gt;5 tests, 33 assertions&lt;span class=&#39;o&#39;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-                <link>http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-functional-test</link>
-                <guid>http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-functional-test</guid>
+                <link>http://imunew.github.io/symfony2-phpunit-first-functional-test</link>
+                <guid>http://imunew.github.io/symfony2-phpunit-first-functional-test</guid>
                 <pubDate>2013-11-17T00:00:00+09:00</pubDate>
         </item>
 

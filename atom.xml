@@ -4,7 +4,7 @@
  <title>imunew's tech blog</title>
  <link href="http://imunew.github.io/" rel="self"/>
  <link href="http://imunew.github.io"/>
- <updated>2013-11-17T17:39:51+09:00</updated>
+ <updated>2013-11-17T17:44:22+09:00</updated>
  <id>http://imunew.github.io</id>
  <author>
    <name>Name Lastname</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Symfony2 + PHPUnitではじめてのテスト（単体テスト編）</title>
-   <link href="http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-unit-test"/>
+   <link href="http://imunew.github.io/symfony2-phpunit-first-unit-test"/>
    <updated>2013-11-17T00:00:00+09:00</updated>
-   <id>http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-unit-test</id>
+   <id>http://imunew.github.io/symfony2-phpunit-first-unit-test</id>
    <content type="html">&lt;h2 id=&#39;id15&#39;&gt;まずは導入してみよう&lt;/h2&gt;
 &lt;p&gt;なぜ、テストコードを書くのか、テストコードはどう書くべきか、といった話はおいといて、今回はとにかくテストコードを書いて実行してみるということを目的とします。
 &lt;/p&gt;
@@ -115,9 +115,9 @@ OK &lt;span class=&#39;o&#39;&gt;(&lt;/span&gt;2 tests, 6 assertions&lt;span cla
  
  <entry>
    <title>Symfony2 + PHPUnitではじめてのテスト（モック編）</title>
-   <link href="http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-mocking"/>
+   <link href="http://imunew.github.io/symfony2-phpunit-first-mocking"/>
    <updated>2013-11-17T00:00:00+09:00</updated>
-   <id>http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-mocking</id>
+   <id>http://imunew.github.io/symfony2-phpunit-first-mocking</id>
    <content type="html">&lt;h2 id=&#39;id11&#39;&gt;はじめに&lt;/h2&gt;
 
 &lt;p&gt;単体テスト、機能テストについては、下記を参照してください。&lt;/p&gt;
@@ -153,9 +153,9 @@ OK &lt;span class=&#39;o&#39;&gt;(&lt;/span&gt;2 tests, 6 assertions&lt;span cla
  
  <entry>
    <title>Symfony2 + PHPUnitではじめてのテスト（機能テスト編）</title>
-   <link href="http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-functional-test"/>
+   <link href="http://imunew.github.io/symfony2-phpunit-first-functional-test"/>
    <updated>2013-11-17T00:00:00+09:00</updated>
-   <id>http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-functional-test</id>
+   <id>http://imunew.github.io/symfony2-phpunit-first-functional-test</id>
    <content type="html">&lt;h2 id=&#39;id1&#39;&gt;さっそくやってみよう&lt;/h2&gt;
 &lt;p&gt;導入方法および単体テストについては、下記を参照ください。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#39;/test/2013/11/11/symfony2-phpunit-first-unit-test/&#39;&gt;Symfony2 + PHPUnitではじめてのテスト（単体テスト編）&lt;/a&gt;&lt;/p&gt;

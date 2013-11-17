@@ -8,6 +8,6 @@ http://imunew.github.io/rss.xml
 http://imunew.github.io/sitemap.txt
 http://imunew.github.io/tags.html
 
-http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-unit-test
-http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-mocking
-http://imunew.github.io/test/2013/11/17/symfony2-phpunit-first-functional-test
+http://imunew.github.io/symfony2-phpunit-first-unit-test
+http://imunew.github.io/symfony2-phpunit-first-mocking
+http://imunew.github.io/symfony2-phpunit-first-functional-test
