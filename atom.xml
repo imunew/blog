@@ -4,7 +4,7 @@
  <title>imunew's tech blog</title>
  <link href="http://imunew.github.io/" rel="self"/>
  <link href="http://imunew.github.io"/>
- <updated>2013-11-17T17:57:15+09:00</updated>
+ <updated>2013-11-17T18:07:23+09:00</updated>
  <id>http://imunew.github.io</id>
  <author>
    <name>Name Lastname</name>
@@ -327,8 +327,8 @@ symfony.comに説明があるので、ほぼそのとおり実装しました。
 &lt;p&gt;&lt;a href=&#39;http://symfony.com/doc/current/bundles/DoctrineFixturesBundle/#using-the-container-in-the-fixtures&#39;&gt;Using the Container in the Fixtures - Symfony&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;各クラス、インターフェイスの関係をクラス図にまとめると下記のようになります。&lt;/p&gt;
-&lt;a href=&#39;/images/data_fixtures.png&#39;&gt;
-&lt;img src=&#39;/images/data_fixtures.png&#39; /&gt;
+&lt;a href=&#39;/blog/images/data_fixtures.png&#39;&gt;
+&lt;img src=&#39;/blog/images/data_fixtures.png&#39; /&gt;
 &lt;/a&gt;
 &lt;h3 id=&#39;id6&#39;&gt;ページにアクセス&lt;/h3&gt;
 
