@@ -5,8 +5,8 @@
         <description>imunew's tech blog - Name Lastname</description>
         <link>http://imunew.github.io</link>
         <link>http://imunew.github.io</link>
-        <lastBuildDate>2013-11-17T17:46:53+09:00</lastBuildDate>
-        <pubDate>2013-11-17T17:46:53+09:00</pubDate>
+        <lastBuildDate>2013-11-17T17:57:15+09:00</lastBuildDate>
+        <pubDate>2013-11-17T17:57:15+09:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -91,9 +91,10 @@ composer.jsonに下記記述を追加し、updateすれば、インストール�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4 id=&#39;id18&#39;&gt;テストの実行&lt;/h4&gt;
 &lt;p&gt;作成したテストを実行するために、phpunitコマンドを実行します。&lt;br /&gt;
-phpunitコマンドについては、本家サイトに詳しい説明がありますので参照ください。&lt;br /&gt;
-[コマンドラインのテストランナー - PHPUnit](http://phpunit.de/manual/3.7/ja/textui.html)
-実際に上述のDateTimeHelperTestを実行してみると、下記のように出力されます。
+phpunitコマンドについては、本家サイトに詳しい説明がありますので参照ください。
+&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#39;http://phpunit.de/manual/3.7/ja/textui.html&#39;&gt;コマンドラインのテストランナー - PHPUnit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;実際に上述のDateTimeHelperTestを実行してみると、下記のように出力されます。
 &lt;/p&gt;&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;bash&#39;&gt;&lt;span class=&#39;nv&#39;&gt;$ &lt;/span&gt;&lt;span class=&#39;nb&#39;&gt;cd &lt;/span&gt;bin
 &lt;span class=&#39;nv&#39;&gt;$ &lt;/span&gt;./phpunit -c ../app/ ../src/Sopra/CoreBundle/Tests/Helper/DateTimeHelperTest.php
 PHPUnit 3.7.27 by Sebastian Bergmann.
